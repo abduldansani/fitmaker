@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: local("Vazirmatn-VariableFont_wght"),
+    url("./assets/fonts/Vazirmatn-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gagalin";
+  src: local("Gagalin-Regular"),
+    url("./assets/fonts/Gagalin-Regular.otf") format("opentype");
+}
+
+html {
+  @apply bg-greyLight;
+}
+
+.container {
+  @apply mx-auto px-4 md:px-2 xl:max-w-7xl;
+}
