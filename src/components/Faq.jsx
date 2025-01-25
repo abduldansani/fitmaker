@@ -7,7 +7,9 @@ const Faq = () => {
   const [openQuestion, setOpenQuestion] = useState(null);
   return (
     <Section>
-      <div className="container space-y-3 xl:space-y-6">
+      <div className="relative container space-y-3 xl:space-y-6">
+        <div className="absolute w-1/3 h-1/3 top-1/2 -translate-y-1/2 left-5 bg-primaryVar5 -z-10 rounded-full blur-[200px]" />
+        <div className="absolute w-1/3 h-1/2 top-1/2 -translate-y-1/2 right-5 rounded-full bg-secondaryVar3 -z-10 blur-[200px]" />
         <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl text-center">
           FAQ
         </h2>
@@ -29,7 +31,7 @@ const Faq = () => {
                 </button>
               </div>
               {openQuestion === i && (
-                <div className="-mb-0.5 -mr-0.5 -ml-px border-primary -mt-5 xl:-mt-7 border-x-2 border-b-2  px-4 pb-3 pt-6 rounded-b-lg">
+                <div className="-mb-0.5 -mr-0.5 -ml-px border-primary -mt-5 xl:-mt-7 border-x-2 border-b-2  px-4 pb-3 pt-8 lg:pt-10 rounded-b-lg">
                   <p className="text-xs md:text-sm lg:text-base text-greyText">
                     {q.answer}
                   </p>

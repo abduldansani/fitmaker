@@ -5,7 +5,8 @@ const Community = () => {
   return (
     <Section>
       <div className="container flex max-md:flex-col gap-4 xl:gap-6">
-        <div className="flex flex-col gap-3 xl:gap-4 justify-between">
+        <div className="relative flex flex-col gap-3 xl:gap-4 justify-between">
+          <div className="absolute w-1/2 h-1/2 -z-10 bg-primaryVar5 rounded-full top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 blur-[150px]" />
           <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl">
             Join Our <span className="text-primary">Fitness Community</span>
           </h2>
@@ -54,7 +55,8 @@ const Community = () => {
           </div>
         </div>
 
-        <div className="rounded-xl p-2 xl:p-4 bg-primaryVar3 md:w-1/2 shrink-0 flex gap-2 xl:gap-4 md:justify-around flex-col">
+        <div className=" relative rounded-xl p-2 xl:p-4 bg-primaryVar3 md:w-1/2 shrink-0 flex gap-2 xl:gap-4 md:justify-around flex-col">
+          <div className="absolute w-1/2 h-1/2 -z-10 bg-secondaryVar3 rounded-full top-1/2 -translate-y-1/2 right-0 blur-[150px]" />
           <div className="flex gap-2 flex-col">
             <div className="flex items-center gap-4 justify-center">
               <div className="flex gap-1 flex-col items-center">

@@ -15,7 +15,7 @@
 }
 
 html {
-  @apply bg-greyLight;
+  @apply bg-grey;
 }
 
 .container {

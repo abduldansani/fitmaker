@@ -35,7 +35,9 @@ const Blog = () => {
           Discover essential tips to maximize your workout results and reach
           your fitness goals faster.
         </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className="absolute bg-secondaryVar3 w-1/2 lg:w-1/3 h-1/3 lg:h-1/2 rounded-full top-5 left-0 -z-10 blur-[200px]" />
+          <div className="absolute bg-primaryVar5 w-1/2 lg:w-1/3 h-1/3 lg:h-1/2 rounded-full bottom-4 right-4 -z-10 blur-[200px]" />
           {blogPosts.map((post, i) => (
             <div
               className={`flex flex-col justify-end bg-cover bg-center rounded-lg ${

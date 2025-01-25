@@ -56,6 +56,33 @@ export const navLinks = [
   },
 ];
 
+export const stats = [
+  {
+    id: 1,
+    figures: "+ 80",
+    desc: "Coaches",
+    positionClass: "top-1/3 -translate-x-1/3",
+  },
+  {
+    id: 2,
+    figures: "+ 1300",
+    desc: "Positive Reviews",
+    positionClass: "right-0 translate-y-24 xl:translate-y-1/2",
+  },
+  {
+    id: 3,
+    figures: "+ 1000",
+    desc: "Workout Videos",
+    positionClass: "bottom-0",
+  },
+  {
+    id: 4,
+    figures: "+ 1500",
+    desc: "Trainers",
+    positionClass: "bottom-0 right-0 -translate-y-1/3",
+  },
+];
+
 export const ourWebsite = [
   {
     id: 1,
@@ -151,7 +178,7 @@ export const testimonials = [
     name: "Josh Oliver",
     about: "Our Trainer",
     review:
-      "I’ve been using Fitmaker for the past three months, and I’m genuinely impressed. The website is easy to navigate, and everything is laid out clearly. I purchased the Premium Plan, and the personalized coaching has been a game-changer for me. My coach is incredibly supportive and always available to answer my questions.",
+      "Fitmaker has been a great help in my fitness journey. I opted for the group coaching plan, and it has been wonderful. The workout plans are detailed and adaptable. The trainers are encouraging and keep me motivated throughout my progress. I highly recommend Fitmaker to anyone who needs professional guidance.",
     image: josh,
   },
   {
@@ -159,7 +186,7 @@ export const testimonials = [
     name: "Edward Hawley",
     about: "Our Trainer",
     review:
-      "I’ve been using Fitmaker for the past three months, and I’m genuinely impressed. The website is easy to navigate, and everything is laid out clearly. I purchased the Premium Plan, and the personalized coaching has been a game-changer for me. My coach is incredibly supportive and always available to answer my questions.",
+      "Choosing Fitmaker was one of the best decisions for my health goals. The variety of workout plans keeps it exciting, and the nutritional tips are very practical. The trainers are approachable and skilled, always making sure I’m on track. I’ve noticed significant improvements, and I feel more confident now.",
     image: edward,
   },
 ];
