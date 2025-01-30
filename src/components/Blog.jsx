@@ -10,40 +10,50 @@ import {
 } from "../assets";
 import { blogPosts } from "../constants";
 
+import { motion } from "motion/react";
+import { revealVar } from "../motion/opacityReveal";
+
 const Blog = () => {
   return (
     <Section>
-      <div className="container space-y-4 xl:space-y-6">
+      <motion.div
+        variants={revealVar}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container space-y-4 xl:space-y-6"
+      >
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl text-center">
+          <h2 className="text-center text-xl font-semibold lg:text-2xl lg:font-bold xl:text-3xl">
             Fitmaker <span className="text-primary">Blog Posts</span>
           </h2>
           <div className="flex items-center gap-2">
             <img
               src={arrowLeftWhite}
               alt="-"
-              className="border-2 border-white p-2 rounded-[4px]"
+              className="rounded-[4px] border-2 border-white p-2"
             />
             <img
               src={arrowRightWhite}
               alt="-"
-              className="border-2 border-white p-2 rounded-[4px]"
+              className="rounded-[4px] border-2 border-white p-2"
             />
           </div>
         </div>
-        <p className="text-xs lg:text-sm xl:text-base text-center">
+        <p className="text-center text-xs lg:text-sm xl:text-base">
           Discover essential tips to maximize your workout results and reach
           your fitness goals faster.
         </p>
-        <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-2">
-          <div className="absolute bg-secondaryVar3 w-1/2 lg:w-1/3 h-1/3 lg:h-1/2 rounded-full top-5 left-0 -z-10 blur-[200px]" />
-          <div className="absolute bg-primaryVar5 w-1/2 lg:w-1/3 h-1/3 lg:h-1/2 rounded-full bottom-4 right-4 -z-10 blur-[200px]" />
+        <div className="relative grid grid-cols-2 gap-2 lg:grid-cols-4">
+          <div className="absolute left-0 top-5 -z-10 h-1/3 w-1/2 rounded-full bg-secondaryVar3 blur-[200px] lg:h-1/2 lg:w-1/3" />
+          <div className="absolute bottom-4 right-4 -z-10 h-1/3 w-1/2 rounded-full bg-primaryVar5 blur-[200px] lg:h-1/2 lg:w-1/3" />
           {blogPosts.map((post, i) => (
             <div
-              className={`flex flex-col justify-end bg-cover bg-center rounded-lg ${
+              key={post.id}
+              className={`flex flex-col justify-end rounded-lg bg-cover bg-center ${
                 i === 0
-                  ? "gap-2 lg:gap-3 col-span-2 lg:row-span-2 h-[380px] p-3 xl:py-4 xl:px-5"
-                  : "gap-1 h-[186px] p-2"
+                  ? "col-span-2 h-[380px] gap-2 p-3 lg:row-span-2 lg:gap-3 xl:px-5 xl:py-4"
+                  : "h-[186px] gap-1 p-2"
               }`}
               style={{ backgroundImage: `url(${post.image})` }}
             >
@@ -58,10 +68,10 @@ const Blog = () => {
               </h3>
               <div className="flex justify-between">
                 <div
-                  className={`hidden lg:flex items-center gap-1 ${
+                  className={`hidden items-center gap-1 lg:flex ${
                     i === 0
-                      ? "xl:font-light xl:sm"
-                      : "lg:hidden text-[10px] md:text-xs"
+                      ? "xl:sm xl:font-light"
+                      : "text-[10px] md:text-xs lg:hidden"
                   }`}
                 >
                   <img
@@ -73,7 +83,7 @@ const Blog = () => {
                 </div>
                 <div
                   className={`flex items-center gap-1 ${
-                    i === 0 ? "xl:font-light xl:sm" : "text-[10px] md:text-xs"
+                    i === 0 ? "xl:sm xl:font-light" : "text-[10px] md:text-xs"
                   }`}
                 >
                   <img
@@ -91,11 +101,11 @@ const Blog = () => {
             </div>
           ))}
         </div>
-        <button className="mx-auto py-2.5 px-5 text-secondary flex items-center gap-1 border border-secondary rounded-xl text-sm font-light">
+        <button className="mx-auto flex items-center gap-1 rounded-xl border border-secondary px-5 py-2.5 text-sm font-light text-secondary">
           <p>View All</p>
           <img src={chevronRight} alt="" />
         </button>
-      </div>
+      </motion.div>
     </Section>
   );
 };

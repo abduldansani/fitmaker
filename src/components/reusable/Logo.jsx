@@ -2,7 +2,7 @@ const Logo = () => {
   return (
     <div className="space-y-1">
       <div className="flex items-center gap-0.5 xl:gap-1">
-        <div className="w-[30px] xl:w-10 h-[26px] xl:h-8 rounded bg-primary"></div>
+        <div className="h-[26px] w-[30px] rounded bg-primary xl:h-8 xl:w-10"></div>
         <div className="font-semibold xl:text-lg">
           Fit<span className="text-primary">Maker</span>
         </div>

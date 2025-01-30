@@ -1,8 +1,6 @@
 const Section = ({ children, className }) => {
   return (
-    <section
-      className={`py-5 lg:py-[30px] xl:py-10 ${className ? className : ""}`}
-    >
+    <section className={`py-8 lg:py-10 xl:py-12 ${className ? className : ""}`}>
       {children}
     </section>
   );

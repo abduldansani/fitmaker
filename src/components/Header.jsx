@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chevronDown, menu, searchIcon } from "../assets";
 import { navLinks } from "../constants";
 import Logo from "./reusable/Logo";
-import Section from "./reusable/Section";
 import MobileMenu from "./MobileMenu";
 
 import {
@@ -22,6 +21,16 @@ const Header = () => {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
 
+  useEffect(() => {
+    menuOpen
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "");
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const handleCloseMenu = () => {
     setMenuOpen(false);
   };
@@ -38,39 +47,39 @@ const Header = () => {
     <motion.header
       variants={headerVar}
       animate={hidden ? "hidden" : "visible"}
-      className="sticky top-0 bg-grey z-50 py-4 lg:py-5"
+      className="sticky top-0 z-50 bg-grey py-4 lg:py-5"
     >
       <div className="container flex justify-between">
-        <div className="flex items-center gap-3 xl:gap-6 mr-6 max-lg:flex-1">
+        <div className="mr-6 flex items-center gap-3 max-lg:flex-1 xl:gap-6">
           <Logo />
-          <div className="rounded-xl bg-greyLight p-2 flex gap-1 sm:flex-1">
+          <div className="flex gap-1 rounded-xl bg-greyLight p-2 sm:flex-1">
             <img
               src={searchIcon}
               alt=""
               width={25}
               height={25}
-              className="w-[25px] h-[25px]"
+              className="h-[25px] w-[25px]"
             />
             <input
               type="text"
               placeholder="Search"
-              className="hidden sm:max-lg:block text-xs bg-greyLight outline-none flex-1"
+              className="hidden flex-1 bg-greyLight text-xs outline-none sm:max-lg:block"
             />
           </div>
         </div>
-        <nav className="hidden lg:flex justify-around items-center flex-1">
+        <nav className="hidden flex-1 items-center justify-around lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href="#"
-              className="flex items-center font-medium gap-1"
+              className="flex items-center gap-1 font-medium"
             >
-              <div className="flex gap-1 flex-col items-center">
+              <div className="flex flex-col items-center gap-1">
                 <div className="transition-transform duration-500">
                   {link.title}
                 </div>
                 {link.id === 1 && (
-                  <div className="w-[200%] h-2 rounded-full bg-primary bg-gradient-to-r from-primary from-30% to-secondary" />
+                  <div className="h-2 w-[200%] rounded-full bg-primary bg-gradient-to-r from-primary from-30% to-secondary" />
                 )}
               </div>
               {link.hasChildren && (
@@ -79,11 +88,11 @@ const Header = () => {
             </a>
           ))}
         </nav>
-        <div className="hidden lg:flex gap-3 ml-6">
-          <button className="py-2 px-4 text-secondary border border-secondary text-sm font-light rounded-xl bg-grey hover:bg-greyLight">
+        <div className="ml-6 hidden gap-3 lg:flex">
+          <button className="rounded-xl border border-secondary bg-grey px-4 py-2 text-sm font-light text-secondary hover:bg-greyLight">
             Login
           </button>
-          <button className="py-2 px-4 bg-primary text-sm font-light rounded-xl  hover:bg-primaryVar1 focus:bg-primaryVar2">
+          <button className="rounded-xl bg-primary px-4 py-2 text-sm font-light hover:bg-primaryVar1 focus:bg-primaryVar2">
             signup
           </button>
         </div>
@@ -91,7 +100,9 @@ const Header = () => {
           <img src={menu} alt="menu" width={36} height={36} />
         </button>
       </div>
-      {menuOpen && <MobileMenu handleCloseMenu={handleCloseMenu} />}
+      <AnimatePresence>
+        {menuOpen && <MobileMenu handleCloseMenu={handleCloseMenu} />}
+      </AnimatePresence>
     </motion.header>
   );
 };

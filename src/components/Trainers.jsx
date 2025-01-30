@@ -8,6 +8,9 @@ import {
 import Section from "./reusable/Section";
 import { trainers } from "../constants";
 
+import { motion } from "motion/react";
+import { revealVar } from "../motion/opacityReveal";
+
 const Trainers = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const containerRef = useRef();
@@ -22,7 +25,7 @@ const Trainers = () => {
     const maxScrollLeft = scrollWidth - clientWidth;
     const newScrollPosition = Math.min(
       Math.max(scrollLeft + scrollAmount, 0),
-      maxScrollLeft
+      maxScrollLeft,
     );
 
     setScrollPosition(newScrollPosition);
@@ -30,9 +33,15 @@ const Trainers = () => {
   };
   return (
     <Section>
-      <div className="container space-y-4 xl:space-y-6">
+      <motion.div
+        variants={revealVar}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container space-y-4 xl:space-y-6"
+      >
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl text-center">
+          <h2 className="text-center text-xl font-semibold lg:text-2xl lg:font-bold xl:text-3xl">
             Meet Our <span className="text-primary">Trainers</span>
           </h2>
           <div className="flex items-center gap-2">
@@ -40,44 +49,44 @@ const Trainers = () => {
               <img
                 src={arrowLeftWhite}
                 alt="-"
-                className="border-2 border-white py-2 px-4 rounded-[4px]"
+                className="rounded-[4px] border-2 border-white px-4 py-2"
               />
             </button>
             <button onClick={() => handleScroll(amount)}>
               <img
                 src={arrowRightWhite}
                 alt="-"
-                className="border-2 border-white py-2 px-4 rounded-[4px]"
+                className="rounded-[4px] border-2 border-white px-4 py-2"
               />
             </button>
           </div>
         </div>
-        <p className="text-xs lg:text-sm xl:text-base text-center">
+        <p className="text-center text-xs lg:text-sm xl:text-base">
           At This Part you can See Some Of our Trainers And They’re Work’s.
         </p>
         <div
           ref={containerRef}
-          className="relative flex justify-between items-center gap-3 lg:gap-6 xl:gap-10 pb-1 scroll-smooth overflow-scroll no-scrollbar"
+          className="relative flex items-center justify-between gap-3 overflow-scroll scroll-smooth pb-1 no-scrollbar lg:gap-6 xl:gap-10"
         >
-          <div className="absolute h-1/3 w-1/2 bottom-2 left-0 bg-primaryVar5 rounded-full blur-[350px] " />
-          <div className="absolute h-1/3 w-1/2 bottom-2 right-0 bg-secondaryVar3 rounded-full blur-[350px] " />
+          <div className="absolute bottom-2 left-0 h-1/3 w-1/2 rounded-full bg-primaryVar5 blur-[350px]" />
+          <div className="absolute bottom-2 right-0 h-1/3 w-1/2 rounded-full bg-secondaryVar3 blur-[350px]" />
           {trainers.map((trainer, i) => (
-            <div key={trainer.id} className="rounded-xl flex flex-col shrink-0">
+            <div key={trainer.id} className="flex shrink-0 flex-col rounded-xl">
               <img
                 src={trainer.image}
                 alt=""
-                className="w-[119.33px] md:w-[214px] md:h-[220px] xl:size-[281px]"
+                className="w-[119.33px] md:h-[220px] md:w-[214px] xl:size-[281px]"
               />
-              <div className="space-y-3 px-3 bg-greyLight drop-shadow-sm rounded-xl">
+              <div className="space-y-3 rounded-xl bg-greyLight px-3 drop-shadow-sm">
                 <h3 className="font-medium xl:text-2xl xl:font-bold">
                   {trainer.name}
                 </h3>
-                <p className="text-greyTextVar1 font-medium text-xs lg:text-sm xl:text-base">
+                <p className="text-xs font-medium text-greyTextVar1 lg:text-sm xl:text-base">
                   {trainer.role}
                 </p>
                 <button className="relative flex items-center gap-1">
                   <div
-                    className={`z-10 absolute left-0 size-5 rounded-full blur-[10px] ${
+                    className={`absolute left-0 z-10 size-5 rounded-full blur-[10px] ${
                       i % 2 === 0 ? "bg-primaryVar5" : "bg-secondaryVar3"
                     }`}
                   />
@@ -88,11 +97,11 @@ const Trainers = () => {
             </div>
           ))}
         </div>
-        <button className="mx-auto py-2.5 px-5 text-secondary flex items-center gap-1 border border-secondary rounded-xl text-sm font-light">
+        <button className="mx-auto flex items-center gap-1 rounded-xl border border-secondary px-5 py-2.5 text-sm font-light text-secondary">
           <p>View All</p>
           <img src={chevronRight} alt="" />
         </button>
-      </div>
+      </motion.div>
     </Section>
   );
 };

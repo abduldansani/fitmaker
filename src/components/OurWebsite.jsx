@@ -1,20 +1,29 @@
-import React from "react";
 import Section from "./reusable/Section";
 import { ourWebsite } from "../constants";
+import { Fragment } from "react";
+
+import { motion } from "motion/react";
+import { revealVar } from "../motion/opacityReveal";
 
 const OurWebsite = () => {
   return (
     <Section>
-      <div className="container relative flex max-md:flex-col items-center justify-between">
-        <div className="absolute w-1/2 h-1/4 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-primaryVar5 blur-[100px] -z-10" />
+      <motion.div
+        variants={revealVar}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container relative flex items-center justify-between max-md:flex-col"
+      >
+        <div className="absolute left-1/2 top-1/2 -z-10 h-1/4 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primaryVar5 blur-[100px]" />
         {ourWebsite.map((item, i) => (
-          <>
-            <div className="text-sm font-medium text-center flex flex-col lg:flex-row">
+          <Fragment key={item.id || i}>
+            <div className="flex flex-col text-center text-sm font-medium lg:flex-row">
               <div className="">
                 <div className="text-nowrap">
                   <span
                     className={`text-2xl font-bold ${
-                      i % 2 == 0 ? "text-primary" : "text-secondary"
+                      i % 2 === 0 ? "text-primary" : "text-secondary"
                     }`}
                   >
                     {item.numbers}
@@ -27,13 +36,13 @@ const OurWebsite = () => {
             <div
               className={`${
                 i === ourWebsite.length - 1 ? "hidden" : ""
-              } py-3 lg:py-0 md:px-1 xl:px-2 flex justify-center`}
+              } flex justify-center py-3 md:px-1 lg:py-0 xl:px-2`}
             >
-              <div className="w-[35vw] sm:w-[30vw] md:w-[3px] md:h-16 h-[3px] bg-gradient-to-r lg:bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+              <div className="h-[3px] w-[35vw] rounded-full bg-gradient-to-r from-primary to-secondary sm:w-[30vw] md:h-16 md:w-[3px] lg:bg-gradient-to-b"></div>
             </div>
-          </>
+          </Fragment>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 };

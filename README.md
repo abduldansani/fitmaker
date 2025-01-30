@@ -1,8 +1,24 @@
-# React + Vite
+# FitMaker - Fitness Website Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based implementation of a fitness website landing page. The design was inspired by a Figma file created by Adib Mohammad Pouri.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fully responsive layout  
+- Clean and modern fitness-themed design  
+- Optimized for performance and accessibility  
+
+## Technologies Used
+
+- **React.js**: For building an interactive user interface.  
+- **Tailwind CSS**: For efficient styling and responsive design.  
+
+## Design Credits
+
+The design for this project is based on the creative work of **[Adib Mohammad Pouri](https://www.figma.com/@adibmohammadpou)**.  
+You can view the original design file on Figma: **[FitMaker - Fitness Website](https://www.figma.com/community/file/1407662193642593349)**.  
+Explore more of their designs on their [Figma profile](https://www.figma.com/@adibmohammadpou).  
+
+## Acknowledgments  
+
+Special thanks to **Adib Mohammad Pouri** for the fantastic design inspiration!  

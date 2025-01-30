@@ -4,13 +4,15 @@
 
 @font-face {
   font-family: "Vazirmatn";
-  src: local("Vazirmatn-VariableFont_wght"),
+  src:
+    local("Vazirmatn-VariableFont_wght"),
     url("./assets/fonts/Vazirmatn-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Gagalin";
-  src: local("Gagalin-Regular"),
+  src:
+    local("Gagalin-Regular"),
     url("./assets/fonts/Gagalin-Regular.otf") format("opentype");
 }
 

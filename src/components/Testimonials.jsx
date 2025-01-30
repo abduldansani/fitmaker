@@ -3,6 +3,9 @@ import { arrowLeftWhite, arrowRightWhite, quote } from "../assets";
 import Section from "./reusable/Section";
 import { testimonials } from "../constants";
 
+import { motion } from "motion/react";
+import { revealVar } from "../motion/opacityReveal";
+
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const displayedTestimonial = testimonials[currentIndex];
@@ -29,19 +32,25 @@ const Testimonials = () => {
 
   return (
     <Section>
-      <div className="container space-y-4 xl:space-y-6">
-        <div className="max-lg:flex items-center justify-between">
-          <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl text-center">
+      <motion.div
+        variants={revealVar}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container space-y-4 xl:space-y-6"
+      >
+        <div className="items-center justify-between max-lg:flex">
+          <h2 className="text-center text-xl font-semibold lg:text-2xl lg:font-bold xl:text-3xl">
             What Our <span className="text-primary">Customers Say</span>
           </h2>
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="flex items-center gap-2 lg:hidden">
             <button onClick={handlePrev}>
               <img
                 src={arrowLeftWhite}
                 alt="-"
                 width={22.5}
                 height={28}
-                className="border-2 border-white px-1 py-2 rounded-[4px]"
+                className="rounded-[4px] border-2 border-white px-1 py-2"
               />
             </button>
             <button onClick={handleNext}>
@@ -50,12 +59,12 @@ const Testimonials = () => {
                 alt="-"
                 width={22.5}
                 height={28}
-                className="border-2 border-white px-1 py-2 rounded-[4px]"
+                className="rounded-[4px] border-2 border-white px-1 py-2"
               />
             </button>
           </div>
         </div>
-        <p className="text-xs lg:text-sm xl:text-base text-center">
+        <p className="text-center text-xs lg:text-sm xl:text-base">
           At This Part you can See Few Of The Many Positive reviews Of Our
           Customers.
         </p>
@@ -69,11 +78,11 @@ const Testimonials = () => {
             />
             <div
               className={`relative self-end ${
-                currentIndex === 0 ? "md:max-xl:-ml-5 " : "ml-5"
-              } max-md:w-2/3 bg-[#5B0408] p-2 space-y-1 rounded-xl`}
+                currentIndex === 0 ? "md:max-xl:-ml-5" : "ml-5"
+              } space-y-1 rounded-xl bg-[#5B0408] p-2 max-md:w-2/3`}
             >
-              <div className="absolute top-1/2 -translalate-y-1/2 left-1/2 -translate-x-1/2 w-2/3 h-2/3 rounded-full bg-primaryVar5 blur-[200px] -z-10" />
-              <div className="flex justify-between items-center">
+              <div className="-translalate-y-1/2 absolute left-1/2 top-1/2 -z-10 h-2/3 w-2/3 -translate-x-1/2 rounded-full bg-primaryVar5 blur-[200px]" />
+              <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <h3 className="font-medium">{displayedTestimonial.name}</h3>
                   <div className="text-xs text-greyText">
@@ -93,7 +102,7 @@ const Testimonials = () => {
               alt="-"
               width={36}
               height={36}
-              className="size-6 xl:size-[36px] max-lg:hidden border-2 border-white px-1 py-2 rounded-[4px]"
+              className="size-6 rounded-[4px] border-2 border-white px-1 py-2 max-lg:hidden xl:size-[36px]"
             />
           </button>
           <button onClick={handleNext} className="shrink-0">
@@ -102,27 +111,27 @@ const Testimonials = () => {
               alt="-"
               width={36}
               height={36}
-              className="size-6 xl:size-[36px] max-lg:hidden border-2 border-white px-1 py-2 rounded-[4px]"
+              className="size-6 rounded-[4px] border-2 border-white px-1 py-2 max-lg:hidden xl:size-[36px]"
             />
           </button>
           {nextTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="max-md:hidden relative shrink-0 flex justify-center items-end rounded-lg"
+              className="relative flex shrink-0 items-end justify-center rounded-lg max-md:hidden"
             >
-              <div className="absolute w-full h-full blur-[300px] bg-secondaryVar3 -z-10" />
+              <div className="absolute -z-10 h-full w-full bg-secondaryVar3 blur-[300px]" />
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-[102px] h-[280px] bg-secondaryVar3 rounded-lg"
+                className="h-[280px] w-[102px] rounded-lg bg-secondaryVar3"
               />
-              <div className="absolute w-full -rotate-90 text-nowrap mb-14">
+              <div className="absolute mb-14 w-full -rotate-90 text-nowrap">
                 {testimonial.name}
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </Section>
   );
 };

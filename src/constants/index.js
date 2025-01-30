@@ -248,7 +248,7 @@ export const blogPosts = [
     image: homeTraining,
   },
   {
-    id: 1,
+    id: 5,
     title: "How to Always Stay Motivated ",
     category: "Motivation",
     date: "August 14",

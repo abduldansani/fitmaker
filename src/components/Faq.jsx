@@ -3,23 +3,32 @@ import { faqClose, faqOpen } from "../assets";
 import { faq } from "../constants";
 import Section from "./reusable/Section";
 
+import { motion } from "motion/react";
+import { revealVar } from "../motion/opacityReveal";
+
 const Faq = () => {
   const [openQuestion, setOpenQuestion] = useState(null);
   return (
     <Section>
-      <div className="relative container space-y-3 xl:space-y-6">
-        <div className="absolute w-1/3 h-1/3 top-1/2 -translate-y-1/2 left-5 bg-primaryVar5 -z-10 rounded-full blur-[200px]" />
-        <div className="absolute w-1/3 h-1/2 top-1/2 -translate-y-1/2 right-5 rounded-full bg-secondaryVar3 -z-10 blur-[200px]" />
-        <h2 className="font-semibold text-xl lg:font-bold lg:text-2xl xl:text-3xl text-center">
+      <motion.div
+        variants={revealVar}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container relative space-y-3 xl:space-y-6"
+      >
+        <div className="absolute left-5 top-1/2 -z-10 h-1/3 w-1/3 -translate-y-1/2 rounded-full bg-primaryVar5 blur-[200px]" />
+        <div className="absolute right-5 top-1/2 -z-10 h-1/2 w-1/3 -translate-y-1/2 rounded-full bg-secondaryVar3 blur-[200px]" />
+        <h2 className="text-center text-xl font-semibold lg:text-2xl lg:font-bold xl:text-3xl">
           FAQ
         </h2>
-        <div className="border-2 border-secondary rounded-lg flex flex-col gap-4 xl:gap-6">
+        <div className="flex flex-col gap-4 rounded-lg border-2 border-secondary xl:gap-6">
           {faq.map((q, i) => (
             <div key={q.id}>
               <div
-                className={`-mt-0.5 -ml-px -mb-px -mr-0.5 px-3 py-2 md:px-4 md:py-3 xl:px-6 xl:py-4 border-2 ${
+                className={`-mb-px -ml-px -mr-0.5 -mt-0.5 border-2 px-3 py-2 md:px-4 md:py-3 xl:px-6 xl:py-4 ${
                   openQuestion === i ? "border-primary" : "border-secondary"
-                } flex rounded-lg items-center justify-between`}
+                } flex items-center justify-between rounded-lg`}
               >
                 <h3 className="text-sm font-medium md:text-base xl:text-xl xl:font-semibold">
                   {q.question}
@@ -31,8 +40,8 @@ const Faq = () => {
                 </button>
               </div>
               {openQuestion === i && (
-                <div className="-mb-0.5 -mr-0.5 -ml-px border-primary -mt-5 xl:-mt-7 border-x-2 border-b-2  px-4 pb-3 pt-8 lg:pt-10 rounded-b-lg">
-                  <p className="text-xs md:text-sm lg:text-base text-greyText">
+                <div className="-mb-0.5 -ml-px -mr-0.5 -mt-5 rounded-b-lg border-x-2 border-b-2 border-primary px-4 pb-3 pt-8 lg:pt-10 xl:-mt-7">
+                  <p className="text-xs text-greyText md:text-sm lg:text-base">
                     {q.answer}
                   </p>
                 </div>
@@ -40,7 +49,7 @@ const Faq = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </Section>
   );
 };
